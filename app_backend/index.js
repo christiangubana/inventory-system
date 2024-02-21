@@ -1,3 +1,5 @@
+// index.js
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -14,11 +16,11 @@ mongoose.connect("mongodb://localhost/chef_management", {
   useUnifiedTopology: true,
 });
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection errror:"));
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => console.log("Connected to MongoDB"));
 
-//Authentication routes
-app.post("/register", authController.regiter);
+// Authentication routes
+app.post("/register", authController.register);
 app.post("/login", authController.login);
 
 app.listen(PORT, () => {
